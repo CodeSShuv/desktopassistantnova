@@ -11,15 +11,9 @@ class Entity:
             for token in tokens:
                 print(token)
                 for application in self.applications:
-                    # print(application["name"])
                     if token in application["name"].split(".")[0].lower():
                         print("the correct application is :",application["name"])
                         return application
-                        # return{
-                        #     "intent" : intent
-                        #     "entity": 
-                        # } 
-        
             print("Application not found")
             return None
             pass
