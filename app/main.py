@@ -15,13 +15,15 @@ def main():
                     text =  listen()
                    
                     print(f"Nova: {text}")
-                    Nova.process_command(text)
+                    internalAnswer = Nova.process_command(text)
+                    if internalAnswer == "exit":
+                        break
             # except Exception as e :
             #     Nova.speak("Sorry I faced a problem")
             #     print(e)
             #     pass
     # except Exception as e:
-        Nova.speak("Sorry I face a problem")
+        # Nova.speak("Sorry I face a problem")
             
             
 if __name__ == "__main__":

@@ -23,6 +23,7 @@ class Assistant:
         if message.lower() in ["exit", "quit"]:
             print("Exiting Nova. Goodbye!")
             self.speak("Exiting . Goodbye!")
+            
             return "exit"
         if not message:
           self.speak("Couldn't hear you!") 
