@@ -24,14 +24,36 @@ class Assistant:
             print("Exiting Nova. Goodbye!")
             self.speak("Exiting . Goodbye!")
             return "exit"
+        if not message:
+          self.speak("Couldn't hear you!") 
+          return
+        elif message.strip().lower() == "Who are you".lower():
+           self.speak("I am nova your digital assistant. I can open applications,search on web")
+           return
+        elif message.strip().lower() == "Who is nova".lower():
+            self.speak("Its me")
+            return
         result = self.parser.parse(message)
+       
         if result['intent'] == 'open_app':
+            if(result["entity"] == None): self.speak("Couldn't find the application")
             self.speak(f"opening {result["entity"]["name"]}" )
             self.application_launcher.open(result['entity'])
-        if result['intent'] == "search":
-            self.speak(f"What do you want to search in web? ")
-            query = listen()
-            self.speak(f"searching {query}")
-            self.webSearch.searchInWeb(query)
-      
+        elif result['intent'] == "search":
+            #here their is no none check  for entity's name as I have created a method in entity class that doesnot allows any 
+            #entity's name to be none .. if no entity'name is given by the user then by default the entity;name becomes google. 
+            
+            #so if there is no specific demand for any entity  like youtube or google itself then the nova will search
+            # the query in google.com
+           
+            
+            
+            if result['entity'] == None:
+                self.speak(f"Couldn't decide what to search")
+                return
+                # query.remove(result['intent'])
+            query =result["entity"]['query']
+            self.webSearch.searchInWeb(query, result['entity']['name'])
+        else:
+            self.speak(f"Sorry I can't do that.")
                         

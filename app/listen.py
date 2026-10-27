@@ -33,7 +33,7 @@ def listen():
 
         print(f"You said: {text}")
 
-        return text.lower()
+        return text.strip().lower()
 
 
     except sr.UnknownValueError:

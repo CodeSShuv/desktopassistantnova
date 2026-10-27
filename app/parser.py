@@ -11,7 +11,13 @@ class Parser:
     def parse(self, command):
         tokens = self.preprocessor.runPreprocessing(command)
         final_intent = self.intent.identify_intent(tokens)
+        if final_intent == None:
+            return {
+            "intent" : final_intent,
+            "entity" : None
+        }
         entity = self.entity.getEntity(final_intent, tokens)
+       
         return {
             "intent" : final_intent,
             "entity" : entity

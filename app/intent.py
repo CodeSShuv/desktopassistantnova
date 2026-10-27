@@ -11,7 +11,7 @@ class Intent:
         if 'search' in tokens:
             intent = "search"
             tokens.remove("search")
-            print(tokens)
+           
         
             
         return intent

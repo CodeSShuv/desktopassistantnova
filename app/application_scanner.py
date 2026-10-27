@@ -27,7 +27,7 @@ class ApplicationScanner:
                              for dirFile in dirFiles:
                                 if dirFile.lower().endswith(".lnk"):
                                     shortcut_path = os.path.join(root1, dirFile)
-                                    print(os.path.splitext(dirFile)[0][0])
+                                    # print(os.path.splitext(dirFile)[0][0])
                                     applications.append({
                                         "name": os.path.splitext(dirFile)[0],
                                         "shortcut_path": shortcut_path
